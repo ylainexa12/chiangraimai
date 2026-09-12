@@ -1,0 +1,1342 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f3ed;
+  color: #222;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 40px;
+
+  background: rgba(20, 20, 20, 0.95);
+
+  color: white;
+
+  z-index: 1000;
+}
+
+.logo {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+
+/* =========================
+   ACCUEIL
+========================= */
+
+.hero {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 100px 25px 50px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.48),
+      rgba(0, 0, 0, 0.58)
+    ),
+    url("https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=1600&q=80");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 750px;
+}
+
+.label {
+  color: #b98238;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 15px;
+}
+
+.hero .label {
+  color: #f0c47c;
+}
+
+h1 {
+  font-family: Georgia, serif;
+
+  font-size: 64px;
+
+  margin: 10px 0 20px;
+}
+
+.subtitle {
+  font-size: 19px;
+
+  line-height: 1.7;
+
+  margin-bottom: 35px;
+}
+
+
+/* =========================
+   BOUTONS
+========================= */
+
+.buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-block;
+
+  padding: 14px 24px;
+
+  background: #b98238;
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 5px;
+
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.9;
+}
+
+.button-outline {
+  background: transparent;
+
+  border: 1px solid white;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  padding: 90px 25px;
+
+  max-width: 1100px;
+
+  margin: auto;
+
+  text-align: center;
+}
+
+h2 {
+  font-family: Georgia, serif;
+
+  font-size: 40px;
+
+  margin: 10px 0 20px;
+}
+
+.intro {
+  max-width: 650px;
+
+  margin: auto;
+
+  line-height: 1.7;
+
+  color: #666;
+}
+
+
+/* ========================================
+   MENU
+======================================== */
+
+.menu {
+  padding: 80px 20px;
+  background: #faf8f3;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.menu h2 {
+  margin: 0 0 45px;
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #2d2d2d;
+}
+
+
+/* ========================================
+   CATÉGORIES
+======================================== */
+
+.menu-category {
+  width: 100%;
+  margin-bottom: 1px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e0d9;
+}
+
+.menu-category summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 22px 20px;
+
+  cursor: pointer;
+  list-style: none;
+
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #2d2d2d;
+
+  transition: background 0.2s ease;
+}
+
+.menu-category summary::-webkit-details-marker {
+  display: none;
+}
+
+.menu-category summary:hover {
+  background: #faf8f3;
+}
+
+
+/* ========================================
+   + / -
+======================================== */
+
+.menu-category summary::after {
+  content: "+";
+
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+
+  color: #555;
+
+  transition: transform 0.2s ease;
+}
+
+.menu-category[open] summary::after {
+  content: "−";
+}
+
+
+/* ========================================
+   CONTENU DES CATÉGORIES
+======================================== */
+
+.menu-items {
+  padding: 5px 20px 25px;
+}
+
+
+/* ========================================
+   PLATS
+======================================== */
+
+.menu-item {
+  display: grid;
+
+  /*
+    Code       Nom                         Prix
+    55px       espace disponible           80px
+  */
+  grid-template-columns: 55px minmax(0, 1fr) 80px;
+
+  column-gap: 15px;
+
+  align-items: start;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid #eeeae4;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+
+/* ========================================
+   CODE DU PLAT
+======================================== */
+
+.menu-code {
+  width: 55px;
+
+  font-size: 0.78rem;
+  font-weight: 400;
+
+  color: #999;
+
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   NOM DU PLAT
+======================================== */
+
+.menu-name {
+  min-width: 0;
+
+  font-size: 0.98rem;
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  color: #333;
+
+  text-align: left;
+}
+
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.menu-description {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 0.86rem;
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  color: #777;
+}
+
+
+/* ========================================
+   PRIX
+======================================== */
+
+.menu-price {
+  width: 80px;
+
+  text-align: right;
+  white-space: nowrap;
+
+  font-size: 0.92rem;
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  color: #444;
+}
+
+
+/* ========================================
+   SOUS-CATÉGORIES
+======================================== */
+
+.menu-subcategory {
+  margin: 25px 0 8px;
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid #ddd7cf;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  color: #6b3d2e;
+}
+
+.menu-subcategory:first-child {
+  margin-top: 5px;
+}
+
+
+/* ========================================
+   MENUS MIDI / MENUS SOIR
+======================================== */
+
+.menu-special {
+  margin-bottom: 15px;
+  padding: 20px;
+
+  background: #f7f3ec;
+  border-radius: 6px;
+}
+
+.menu-special:last-child {
+  margin-bottom: 0;
+}
+
+.menu-special-name {
+  font-size: 1rem;
+  font-weight: 500;
+
+  color: #333;
+}
+
+.menu-special-description {
+  margin-top: 6px;
+
+  font-size: 0.9rem;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color: #777;
+}
+
+.menu-special-price {
+  margin-top: 10px;
+
+  font-size: 0.92rem;
+  font-weight: 400;
+
+  color: #444;
+}
+
+
+/* ========================================
+   NOTE
+======================================== */
+
+.menu-note {
+  margin-top: 10px;
+
+  font-size: 0.82rem;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: #777;
+}
+
+
+/* ========================================
+   TABLETTE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .menu {
+    padding: 65px 15px;
+  }
+
+  .menu-container {
+    max-width: 100%;
+  }
+
+  .menu h2 {
+    margin-bottom: 35px;
+    font-size: 2.1rem;
+  }
+
+  .menu-category summary {
+    padding: 20px 16px;
+    font-size: 1.05rem;
+  }
+
+  .menu-items {
+    padding: 5px 16px 20px;
+  }
+
+  .menu-item {
+    grid-template-columns: 48px minmax(0, 1fr) 72px;
+    column-gap: 12px;
+
+    padding: 13px 0;
+  }
+
+  .menu-code {
+    width: 48px;
+    font-size: 0.76rem;
+  }
+
+  .menu-name {
+    font-size: 0.94rem;
+  }
+
+  .menu-description {
+    font-size: 0.83rem;
+  }
+
+  .menu-price {
+    width: 72px;
+    font-size: 0.88rem;
+  }
+}
+
+
+/* ========================================
+   TÉLÉPHONE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .menu {
+    padding: 50px 10px;
+  }
+
+  .menu h2 {
+    margin-bottom: 25px;
+    font-size: 1.9rem;
+  }
+
+  .menu-category summary {
+    padding: 18px 14px;
+
+    font-size: 1rem;
+  }
+
+  .menu-category summary::after {
+    font-size: 1.35rem;
+  }
+
+  .menu-items {
+    padding: 3px 14px 18px;
+  }
+
+  .menu-item {
+    /*
+      Colonnes fixes :
+      code | nom | prix
+    */
+    grid-template-columns: 40px minmax(0, 1fr) 68px;
+
+    column-gap: 8px;
+
+    padding: 12px 0;
+  }
+
+  .menu-code {
+    width: 40px;
+
+    font-size: 0.72rem;
+  }
+
+  .menu-name {
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .menu-description {
+    margin-top: 2px;
+
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .menu-price {
+    width: 68px;
+
+    font-size: 0.84rem;
+    font-weight: 400;
+  }
+
+  .menu-subcategory {
+    margin-top: 22px;
+
+    font-size: 0.9rem;
+  }
+
+  .menu-special {
+    padding: 16px;
+  }
+
+  .menu-special-name {
+    font-size: 0.95rem;
+  }
+
+  .menu-special-description {
+    font-size: 0.82rem;
+  }
+
+  .menu-special-price {
+    font-size: 0.86rem;
+  }
+}
+
+
+/* ========================================
+   TRÈS PETITS TÉLÉPHONES
+======================================== */
+
+@media (max-width: 380px) {
+
+  .menu {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .menu-items {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .menu-item {
+    grid-template-columns: 34px minmax(0, 1fr) 62px;
+    column-gap: 7px;
+  }
+
+  .menu-code {
+    width: 34px;
+    font-size: 0.68rem;
+  }
+
+  .menu-name {
+    font-size: 0.84rem;
+  }
+
+  .menu-description {
+    font-size: 0.75rem;
+  }
+
+  .menu-price {
+    width: 62px;
+    font-size: 0.81rem;
+  }
+}
+/* =========================================
+   MENU — VERSION FINALE
+========================================= */
+
+/* Chaque ligne */
+.menu-item {
+  display: grid !important;
+  grid-template-columns: 45px minmax(0, 1fr) auto !important;
+  column-gap: 12px !important;
+
+  align-items: start !important;
+
+  padding: 15px 0 !important;
+  border-bottom: 1px solid #eeeae4 !important;
+}
+
+
+/* Code : L1, L2, E8... */
+.menu-code {
+  width: auto !important;
+
+  font-size: 0.75rem !important;
+  font-weight: 400 !important;
+
+  line-height: 1.45 !important;
+  color: #999 !important;
+
+  text-align: left !important;
+}
+
+
+/* Nom du plat */
+.menu-name {
+  min-width: 0 !important;
+
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+
+  line-height: 1.4 !important;
+
+  color: #333 !important;
+
+  text-align: left !important;
+}
+
+
+/* Description */
+.menu-description {
+  display: block !important;
+
+  margin-top: 3px !important;
+
+  font-size: 0.80rem !important;
+  font-weight: 400 !important;
+
+  line-height: 1.4 !important;
+
+  color: #777 !important;
+
+  text-align: left !important;
+}
+
+
+/* PRIX */
+.menu-price {
+  width: auto !important;
+
+  font-size: 0.88rem !important;
+  font-weight: 400 !important;
+
+  line-height: 1.4 !important;
+
+  color: #444 !important;
+
+  text-align: right !important;
+  white-space: nowrap !important;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .menu-item {
+    grid-template-columns: 38px minmax(0, 1fr) auto !important;
+    column-gap: 9px !important;
+
+    padding: 13px 0 !important;
+  }
+
+  .menu-code {
+    font-size: 0.70rem !important;
+  }
+
+  .menu-name {
+    font-size: 0.88rem !important;
+    font-weight: 400 !important;
+  }
+
+  .menu-description {
+    font-size: 0.77rem !important;
+  }
+
+  .menu-price {
+    font-size: 0.82rem !important;
+    font-weight: 400 !important;
+  }
+}
+
+
+/* =========================================
+   TRÈS PETIT ÉCRAN
+========================================= */
+
+@media (max-width: 380px) {
+
+  .menu-item {
+    grid-template-columns: 32px minmax(0, 1fr) auto !important;
+    column-gap: 7px !important;
+  }
+
+  .menu-code {
+    font-size: 0.67rem !important;
+  }
+
+  .menu-name {
+    font-size: 0.84rem !important;
+  }
+
+  .menu-description {
+    font-size: 0.74rem !important;
+  }
+
+  .menu-price {
+    font-size: 0.79rem !important;
+  }
+}
+
+/* =========================
+   RESTAURANT
+========================= */
+
+.about {
+  padding: 100px 25px;
+
+  background: #ebe2d4;
+
+  text-align: center;
+}
+
+.about-content {
+  max-width: 700px;
+
+  margin: auto;
+}
+
+.about p:not(.label) {
+  line-height: 1.8;
+
+  color: #555;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  background: #f7f3ed;
+}
+
+.contact-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+
+  margin-top: 45px;
+}
+
+.contact-card {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.contact-card h3 {
+  font-family: Georgia, serif;
+
+  font-size: 23px;
+}
+
+.contact-card p {
+  line-height: 1.7;
+}
+
+.contact-card a {
+  color: #a46d27;
+}
+
+.small {
+  font-size: 13px;
+
+  color: #888;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  padding: 35px 20px;
+
+  text-align: center;
+
+  background: #1e1e1e;
+
+  color: white;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   TELEPHONE
+========================= */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    position: relative;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 18px 15px;
+  }
+
+  nav {
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  .hero {
+    min-height: 85vh;
+
+    padding-top: 60px;
+  }
+
+  h1 {
+    font-size: 44px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .menu-placeholder {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 70px 20px;
+  }
+
+}
+/* =========================
+   MENU PLIABLE
+========================= */
+
+.menu-category {
+  border-top: 1px solid #d8d2c8;
+  margin: 0;
+}
+
+.menu-category:last-child {
+  border-bottom: 1px solid #d8d2c8;
+}
+
+.menu-category summary {
+  list-style: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 24px 4px;
+
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+
+  transition: opacity 0.2s ease;
+}
+
+.menu-category summary::-webkit-details-marker {
+  display: none;
+}
+
+.menu-category summary:hover {
+  opacity: 0.65;
+}
+
+.menu-category .plus {
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+.menu-category[open] .plus {
+  transform: rotate(45deg);
+}
+
+.menu-content {
+  padding: 4px 4px 28px;
+}
+
+.menu-content h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 15px 0;
+
+  border-bottom: 1px solid #eeeae4;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item h4 {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.menu-item p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+.price {
+  flex-shrink: 0;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.menu-price {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.category-note {
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.65;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .menu-category summary {
+    padding: 22px 2px;
+    font-size: 16px;
+  }
+
+  .menu-content {
+    padding-bottom: 20px;
+  }
+
+  .menu-item {
+    gap: 12px;
+  }
+
+  .menu-item h4 {
+    font-size: 14px;
+  }
+
+  .menu-item p {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+}
+/* =========================
+   COMMANDER EN LIGNE
+========================= */
+
+.delivery {
+  text-align: center;
+  background: #f7f5f1;
+  padding: 80px 20px;
+}
+
+.delivery h2 {
+  margin-bottom: 18px;
+}
+
+.delivery .intro {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.delivery .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+
+/* Boutons Uber Eats / Deliveroo */
+
+.delivery .button {
+  min-width: 210px;
+  text-align: center;
+}
+
+
+/* Version téléphone */
+
+@media (max-width: 600px) {
+
+  .delivery {
+    padding: 65px 20px;
+  }
+
+  .delivery .buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .delivery .button {
+    width: 100%;
+  }
+
+}
+/* =========================
+   ACCUEIL / HERO
+========================= */
+
+.hero {
+  min-height: 90vh;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 120px 25px 80px;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.42),
+      rgba(0, 0, 0, 0.42)
+    ),
+    url("https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=2000&q=85")
+    center / cover no-repeat;
+}
+
+
+/* Contenu central */
+
+.hero-content {
+  max-width: 850px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Petit texte au-dessus du nom */
+
+.hero .label {
+  color: #fff;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* Nom du restaurant */
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(45px, 7vw, 72px);
+  line-height: 1.1;
+  margin-bottom: 22px;
+  letter-spacing: 1px;
+}
+
+
+/* Description */
+
+.hero .subtitle {
+  max-width: 650px;
+  margin: 0 auto 35px;
+
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* Boutons */
+
+.hero .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+
+/* Bouton principal */
+
+.hero .button {
+  min-width: 190px;
+  text-align: center;
+}
+
+
+/* Bouton secondaire */
+
+.hero .button-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+
+/* Effet au survol */
+
+.hero .button:hover {
+  transform: translateY(-2px);
+}
+
+.hero .button-outline:hover {
+  background: #fff;
+  color: #222;
+}
+
+
+/* =========================
+   VERSION MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 85vh;
+    padding: 120px 20px 70px;
+  }
+
+  .hero .label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+    margin-bottom: 18px;
+  }
+
+  .hero .subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .hero .buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .hero .button {
+    width: 100%;
+  }
+
+}
+
+/* =========================================
+   PHOTO DES PLATS — APRÈS NOS BOISSONS
+========================================= */
+
+.menu-photo-gallery {
+  width: 100%;
+  max-width: 720px;
+  margin: 45px auto 0;
+  text-align: center;
+}
+
+.menu-photo-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  border-radius: 8px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .menu-photo-gallery {
+    width: 96%;
+    margin: 30px auto 0;
+  }
+
+  .menu-photo-gallery img {
+    border-radius: 6px;
+  }
+
+}
