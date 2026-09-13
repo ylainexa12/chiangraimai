@@ -1299,7 +1299,7 @@
 
 <div class="menu-photo-gallery">
   <img 
-    src="https://hotimg.com/f/3VP7oL5u.jpg" 
+    src="https://ibb.co/Q3TkzQcZ" 
     alt="Sélection de plats thaïlandais de Chiang Rai Mai"
   >
 </div>
@@ -1346,6 +1346,229 @@
     </div>
 
   </section>
+
+  <!-- =========================
+     RÉSERVATION
+========================= -->
+
+<section id="reservation" class="reservation-section">
+
+  <div class="reservation-container">
+
+    <div class="reservation-title">
+      <span>CHIANG RAI MAI</span>
+      <h2>Réserver une table</h2>
+      <p>
+        Réservez votre table directement en ligne.
+        Votre demande sera envoyée au restaurant et confirmée par téléphone.
+      </p>
+    </div>
+
+    <form
+      class="reservation-form"
+      action="https://formsubmit.co/yewangru@gmail.com"
+      method="POST"
+    >
+
+      <!-- Paramètres du formulaire -->
+      <input
+        type="hidden"
+        name="_subject"
+        value="Nouvelle demande de réservation - Chiang Rai Mai"
+      >
+
+      <input
+        type="hidden"
+        name="_captcha"
+        value="false"
+      >
+
+      <input
+        type="hidden"
+        name="_template"
+        value="table"
+      >
+
+      <!-- NOM -->
+      <div class="reservation-field">
+        <label for="name">Nom *</label>
+        <input
+          type="text"
+          id="name"
+          name="Nom"
+          placeholder="Votre nom"
+          required
+        >
+      </div>
+
+      <!-- TÉLÉPHONE -->
+      <div class="reservation-field">
+        <label for="phone">Téléphone *</label>
+        <input
+          type="tel"
+          id="phone"
+          name="Téléphone"
+          placeholder="06 00 00 00 00"
+          required
+        >
+      </div>
+
+      <!-- EMAIL -->
+      <div class="reservation-field">
+        <label for="email">Email *</label>
+        <input
+          type="email"
+          id="email"
+          name="Email"
+          placeholder="votre@email.com"
+          required
+        >
+      </div>
+
+      <!-- DATE + NOMBRE DE PERSONNES -->
+      <div class="reservation-row">
+
+        <div class="reservation-field">
+          <label for="date">Date *</label>
+          <input
+            type="date"
+            id="date"
+            name="Date"
+            required
+          >
+        </div>
+
+        <div class="reservation-field">
+          <label for="guests">Nombre de personnes *</label>
+
+          <select
+            id="guests"
+            name="Nombre de personnes"
+            required
+          >
+            <option value="">Choisir</option>
+            <option value="1">1 personne</option>
+            <option value="2">2 personnes</option>
+            <option value="3">3 personnes</option>
+            <option value="4">4 personnes</option>
+            <option value="5">5 personnes</option>
+            <option value="6">6 personnes</option>
+            <option value="7">7 personnes</option>
+            <option value="8">8 personnes</option>
+            <option value="9">9 personnes</option>
+            <option value="10">10 personnes</option>
+          </select>
+
+        </div>
+
+      </div>
+
+      <!-- HEURE -->
+      <div class="reservation-field">
+
+        <label for="time">Heure *</label>
+
+        <select
+          id="time"
+          name="Heure"
+          required
+        >
+
+          <option value="">Choisir une heure</option>
+
+          <optgroup label="Déjeuner">
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+          </optgroup>
+
+          <optgroup label="Dîner">
+            <option value="19:00">19:00</option>
+            <option value="19:30">19:30</option>
+            <option value="20:00">20:00</option>
+            <option value="20:30">20:30</option>
+            <option value="21:00">21:00</option>
+            <option value="21:30">21:30</option>
+            <option value="22:00">22:00</option>
+          </optgroup>
+
+        </select>
+
+      </div>
+
+      <!-- DEMANDE PARTICULIÈRE -->
+      <div class="reservation-field">
+
+        <label for="message">
+          Demande particulière
+        </label>
+
+        <textarea
+          id="message"
+          name="Demande particulière"
+          rows="4"
+          placeholder="Ex : anniversaire, table particulière..."
+        ></textarea>
+
+      </div>
+
+      <!-- BOUTON -->
+      <button
+        type="submit"
+        class="reservation-button"
+      >
+        Envoyer ma demande
+      </button>
+
+      <p class="reservation-note">
+        Les réservations sont soumises à confirmation par le restaurant.
+      </p>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SCRIPT RÉSERVATION
+========================= -->
+
+<script>
+
+  const dateInput = document.getElementById("date");
+
+  // Empêcher les dates passées
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+
+  dateInput.min = `${year}-${month}-${day}`;
+
+
+  // Empêcher les réservations le dimanche
+  dateInput.addEventListener("change", function () {
+
+    const selectedDate = new Date(this.value + "T00:00:00");
+
+    if (selectedDate.getDay() === 0) {
+
+      alert(
+        "Le restaurant est fermé le dimanche. Merci de choisir une autre date."
+      );
+
+      this.value = "";
+
+    }
+
+  });
+
+</script>
 
 <!-- CONTACT -->
 
