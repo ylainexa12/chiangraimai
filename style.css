@@ -1340,3 +1340,43 @@ footer {
   }
 
 }
+
+/* =========================
+   ESPACEMENT CONTACT
+========================= */
+
+.contact {
+  padding-top: 90px;
+  padding-bottom: 100px;
+}
+
+.contact-grid {
+  margin-top: 50px;
+}
+
+.contact-card {
+  padding: 40px;
+}
+
+/* Espace entre les différentes cartes */
+.contact-grid {
+  row-gap: 35px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+  .contact {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .contact-grid {
+    margin-top: 45px;
+    row-gap: 40px;
+  }
+
+  .contact-card {
+    padding: 35px 30px;
+  }
+}
