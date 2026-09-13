@@ -1380,3 +1380,195 @@ footer {
     padding: 35px 30px;
   }
 }
+
+/* =========================
+   RÉSERVATION
+========================= */
+
+.reservation-section {
+  padding: 80px 20px;
+  background: #f7f3ed;
+}
+
+.reservation-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+
+/* =========================
+   TITRE
+========================= */
+
+.reservation-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reservation-title span {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.reservation-title h2 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.reservation-title p {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+
+/* =========================
+   FORMULAIRE
+========================= */
+
+.reservation-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   CHAMPS
+========================= */
+
+.reservation-field {
+  margin-bottom: 22px;
+}
+
+.reservation-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.reservation-field input,
+.reservation-field select,
+.reservation-field textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  color: #222;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.reservation-field input:focus,
+.reservation-field select:focus,
+.reservation-field textarea:focus {
+  border-color: #222;
+}
+
+.reservation-field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+/* =========================
+   DEUX COLONNES
+========================= */
+
+.reservation-row {
+  display: flex;
+  gap: 20px;
+}
+
+.reservation-row .reservation-field {
+  flex: 1;
+}
+
+
+/* =========================
+   BOUTON
+========================= */
+
+.reservation-button {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #222;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.reservation-button:hover {
+  opacity: 0.85;
+}
+
+
+/* =========================
+   MESSAGE SOUS LE BOUTON
+========================= */
+
+.reservation-note {
+  margin: 15px 0 0;
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .reservation-section {
+    padding: 60px 15px;
+  }
+
+  .reservation-title {
+    margin-bottom: 30px;
+  }
+
+  .reservation-title h2 {
+    font-size: 28px;
+  }
+
+  .reservation-title p {
+    font-size: 14px;
+  }
+
+  .reservation-form {
+    padding: 25px 20px;
+  }
+
+  .reservation-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .reservation-field {
+    margin-bottom: 18px;
+  }
+
+  .reservation-button {
+    padding: 14px;
+  }
+
+}
