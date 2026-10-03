@@ -1347,7 +1347,7 @@
 
   </section>
 
-  <!-- =========================
+<!-- =========================
      RÉSERVATION
 ========================= -->
 
@@ -1394,6 +1394,12 @@
         type="hidden"
         name="_template"
         value="table"
+      >
+
+      <input
+        type="hidden"
+        name="_next"
+        value="https://chiangraimai.fr/merci.html"
       >
 
       <!-- NOM -->
@@ -1550,9 +1556,8 @@
 <script>
 
   const dateInput = document.getElementById("date");
+  const timeInput = document.getElementById("time");
   const reservationForm = document.querySelector(".reservation-form");
-
-  // Empêcher les dates passées
 
   const today = new Date();
 
@@ -1560,14 +1565,62 @@
   const month = String(today.getMonth() + 1).padStart(2, "0");
   const day = String(today.getDate()).padStart(2, "0");
 
-  dateInput.min = `${year}-${month}-${day}`;
+  const todayString = `${year}-${month}-${day}`;
+
+  // Empêcher les dates passées
+
+  dateInput.min = todayString;
 
 
-  // Empêcher les réservations le dimanche
+  // Mettre à jour les horaires disponibles
+
+  function updateAvailableTimes() {
+
+    const selectedDate = dateInput.value;
+    const now = new Date();
+
+    Array.from(timeInput.options).forEach(option => {
+
+      if (!option.value) {
+        return;
+      }
+
+      const [hours, minutes] = option.value
+        .split(":")
+        .map(Number);
+
+      const optionTime = new Date();
+
+      optionTime.setHours(hours, minutes, 0, 0);
+
+      if (
+        selectedDate === todayString &&
+        optionTime <= now
+      ) {
+        option.disabled = true;
+        option.hidden = true;
+
+        if (timeInput.value === option.value) {
+          timeInput.value = "";
+        }
+
+      } else {
+        option.disabled = false;
+        option.hidden = false;
+      }
+
+    });
+
+  }
+
+
+  // Vérifier la date et les horaires
 
   dateInput.addEventListener("change", function () {
 
-    const selectedDate = new Date(this.value + "T00:00:00");
+    const selectedDate = new Date(
+      this.value + "T00:00:00"
+    );
 
     if (selectedDate.getDay() === 0) {
 
@@ -1576,13 +1629,19 @@
       );
 
       this.value = "";
+      timeInput.value = "";
 
+      updateAvailableTimes();
+
+      return;
     }
+
+    updateAvailableTimes();
 
   });
 
 
-  // Réponse automatique selon le nombre de personnes
+  // Préparer les emails avant l'envoi
 
   reservationForm.addEventListener("submit", function () {
 
@@ -1590,7 +1649,9 @@
     const email = document.getElementById("email").value;
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
-    const guests = Number(document.getElementById("guests").value);
+    const guests = Number(
+      document.getElementById("guests").value
+    );
 
     const replyTo = document.querySelector(
       'input[name="_replyto"]'
@@ -1648,6 +1709,11 @@ Chiang Rai Mai`;
     }
 
   });
+
+
+  // Vérifier les horaires dès l'ouverture de la page
+
+  updateAvailableTimes();
 
 </script>
 <!-- CONTACT -->
