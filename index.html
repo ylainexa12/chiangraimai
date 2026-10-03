@@ -1357,10 +1357,12 @@
 
     <div class="reservation-title">
       <span>CHIANG RAI MAI</span>
+
       <h2>Réserver une table</h2>
+
       <p>
-        Réservez votre table directement en ligne.
-        Votre demande sera envoyée au restaurant et confirmée par email.
+        Les réservations jusqu’à 8 personnes sont automatiquement acceptées.
+        Pour 9 personnes ou plus, une confirmation du restaurant est nécessaire.
       </p>
     </div>
 
@@ -1370,17 +1372,22 @@
       method="POST"
     >
 
-      <!-- Paramètres du formulaire -->
       <input
         type="hidden"
         name="_subject"
-        value="Nouvelle demande de réservation - Chiang Rai Mai"
+        value="Nouvelle réservation - Chiang Rai Mai"
       >
 
       <input
         type="hidden"
-        name="_captcha"
-        value="false"
+        name="_replyto"
+        value=""
+      >
+
+      <input
+        type="hidden"
+        name="_autoresponse"
+        value=""
       >
 
       <input
@@ -1390,8 +1397,10 @@
       >
 
       <!-- NOM -->
+
       <div class="reservation-field">
         <label for="name">Nom *</label>
+
         <input
           type="text"
           id="name"
@@ -1402,8 +1411,10 @@
       </div>
 
       <!-- TÉLÉPHONE -->
+
       <div class="reservation-field">
         <label for="phone">Téléphone *</label>
+
         <input
           type="tel"
           id="phone"
@@ -1414,22 +1425,26 @@
       </div>
 
       <!-- EMAIL -->
+
       <div class="reservation-field">
         <label for="email">Email *</label>
+
         <input
           type="email"
           id="email"
-          name="Email"
+          name="email"
           placeholder="votre@email.com"
           required
         >
       </div>
 
-      <!-- DATE + NOMBRE DE PERSONNES -->
+      <!-- DATE ET NOMBRE DE PERSONNES -->
+
       <div class="reservation-row">
 
         <div class="reservation-field">
           <label for="date">Date *</label>
+
           <input
             type="date"
             id="date"
@@ -1458,14 +1473,13 @@
             <option value="9">9 personnes</option>
             <option value="10">10 personnes</option>
           </select>
-
         </div>
 
       </div>
 
       <!-- HEURE -->
-      <div class="reservation-field">
 
+      <div class="reservation-field">
         <label for="time">Heure *</label>
 
         <select
@@ -1473,7 +1487,6 @@
           name="Heure"
           required
         >
-
           <option value="">Choisir une heure</option>
 
           <optgroup label="Déjeuner">
@@ -1493,14 +1506,12 @@
             <option value="21:30">21:30</option>
             <option value="22:00">22:00</option>
           </optgroup>
-
         </select>
-
       </div>
 
       <!-- DEMANDE PARTICULIÈRE -->
-      <div class="reservation-field">
 
+      <div class="reservation-field">
         <label for="message">
           Demande particulière
         </label>
@@ -1511,19 +1522,18 @@
           rows="4"
           placeholder="Ex : anniversaire, table particulière..."
         ></textarea>
-
       </div>
 
-      <!-- BOUTON -->
       <button
         type="submit"
         class="reservation-button"
       >
-        Envoyer ma demande
+        Réserver
       </button>
 
       <p class="reservation-note">
-        Les réservations sont soumises à confirmation par le restaurant.
+        Jusqu’à 8 personnes, la réservation est automatiquement acceptée.
+        Pour 9 personnes ou plus, le restaurant doit confirmer.
       </p>
 
     </form>
@@ -1540,8 +1550,10 @@
 <script>
 
   const dateInput = document.getElementById("date");
+  const reservationForm = document.querySelector(".reservation-form");
 
   // Empêcher les dates passées
+
   const today = new Date();
 
   const year = today.getFullYear();
@@ -1552,6 +1564,7 @@
 
 
   // Empêcher les réservations le dimanche
+
   dateInput.addEventListener("change", function () {
 
     const selectedDate = new Date(this.value + "T00:00:00");
@@ -1568,8 +1581,75 @@
 
   });
 
-</script>
 
+  // Réponse automatique selon le nombre de personnes
+
+  reservationForm.addEventListener("submit", function () {
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const guests = Number(document.getElementById("guests").value);
+
+    const replyTo = document.querySelector(
+      'input[name="_replyto"]'
+    );
+
+    const subject = document.querySelector(
+      'input[name="_subject"]'
+    );
+
+    const autoresponse = document.querySelector(
+      'input[name="_autoresponse"]'
+    );
+
+    replyTo.value = email;
+
+
+    if (guests <= 8) {
+
+      subject.value =
+        "Réservation automatiquement acceptée - Chiang Rai Mai";
+
+      autoresponse.value =
+`Bonjour ${name},
+
+Votre réservation au restaurant Chiang Rai Mai est automatiquement acceptée.
+
+Date : ${date}
+Heure : ${time}
+Nombre de personnes : ${guests}
+
+Nous vous attendons avec plaisir.
+
+À bientôt,
+Chiang Rai Mai`;
+
+    } else {
+
+      subject.value =
+        "Demande de réservation à confirmer - Chiang Rai Mai";
+
+      autoresponse.value =
+`Bonjour ${name},
+
+Votre demande de réservation a bien été envoyée au restaurant Chiang Rai Mai.
+
+Date : ${date}
+Heure : ${time}
+Nombre de personnes : ${guests}
+
+Comme votre réservation concerne 9 personnes ou plus, le restaurant doit maintenant la confirmer. Vous recevrez une réponse par email.
+
+À bientôt,
+Chiang Rai Mai`;
+
+    }
+
+  });
+
+</script>
 <!-- CONTACT -->
 
 <section id="contact" class="contact section">
@@ -1612,7 +1692,7 @@
 
       <p>
         12h00 – 14h30<br>
-        19h00 – 22h30
+        19h00 – 22h30 no
       </p>
 
       <p>
