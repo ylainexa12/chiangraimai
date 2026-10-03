@@ -1572,3 +1572,44 @@ footer {
   }
 
 }
+
+/* Correction du champ date sur téléphone */
+
+.reservation-row {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.reservation-row .reservation-field {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.reservation-field input[type="date"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+@media (max-width: 600px) {
+
+  .reservation-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .reservation-row .reservation-field {
+    width: 100%;
+  }
+
+  .reservation-field input[type="date"] {
+    width: 100%;
+  }
+
+}
